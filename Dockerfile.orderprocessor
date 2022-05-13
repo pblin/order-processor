@@ -1,0 +1,14 @@
+FROM node:10.16.3-alpine
+
+WORKDIR /app 
+RUN mkdir /tmp/orderlog
+
+COPY . /app
+RUN apk update 
+RUN apk add python
+RUN apk add g++
+RUN apk add make
+RUN yarn
+
+ENTRYPOINT  ["yarn"]
+CMD ["run", "start"]
